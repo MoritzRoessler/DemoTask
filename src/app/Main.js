@@ -10,10 +10,14 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import ResponsiveGrid from './container/ResponsiveGrid'
+import ListCards from './components/ListCards';
+
+
+
 const styles = {
   container: {
     textAlign: 'center',
-    paddingTop: 200,
   },
 };
 
@@ -23,56 +27,15 @@ const muiTheme = getMuiTheme({
   },
 });
 
+
 class Main extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      open: false,
-    };
-  }
-
-  handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  }
-
-  handleTouchTap = () => {
-    this.setState({
-      open: true,
-    });
-  }
-
-  render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onTouchTap={this.handleRequestClose}
-      />
-    );
-
+  render() { 
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={styles.container}>
-          <Dialog
-            open={this.state.open}
-            title="Super Secret Password"
-            actions={standardActions}
-            onRequestClose={this.handleRequestClose}
-          >
-            1-2-3-4-5
-          </Dialog>
-          <h1>Material-UI</h1>
-          <h2>example project</h2>
-          <RaisedButton
-            label="Super Secret Password"
-            secondary={true}
-            onTouchTap={this.handleTouchTap}
-          />
-        </div>
-      </MuiThemeProvider>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div style={styles.container}>
+            <ListCards />
+          </div>
+        </MuiThemeProvider>
     );
   }
 }
